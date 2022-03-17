@@ -1,0 +1,80 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="data:," rel="icon">
+    <script>
+    console.log("We got here.");
+  //  $(document).ready(function() {
+   $("#body").ready(function() {
+    var displayResources = $("#body");
+    displayResources.text("Loading data from JSON source...");
+    $.ajax({
+      type: "GET",
+      url: "json",
+      success: function(result) {
+        console.log(result);
+        var output =
+           "<table>" +
+                "<thead>" +
+                "<tr>" +
+                "<th>Measurement</th><th>Value</th>" +
+                "</tr></thead><tbody><tr>" +
+                "<td>Temp. Celsius</td><td>" +
+                "<span className=\"sensor\">" + result.temp +
+                "</span></td> " +
+                "</tr> <tr><td>Temp. Fahrenheit</td> " +
+                "<td><span className=\"sensor\">XXXX</span>" +
+                "</td></tr><tr><td>Pressure</td><td>" +
+                "<span className=\"sensor\">" + result.pres + "</span></td></tr><tr><td>Humidity</td><td><span className=\"sensor\">" + result.hum + "</span></td> </tr>"
+           output += "</tbody></table>";
+        displayResources.html(output);
+        $("table").addClass("table");
+      }
+    });
+  });
+ </script>
+
+    <style>body {
+        text-align: center;
+        font-family: "Trebuchet MS", Arial;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 35%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    th {
+        padding: 12px;
+        background-color: #0043af;
+        color: white;
+    }
+
+    tr {
+        border: 1px solid #ddd;
+        padding: 12px;
+    }
+
+    tr:hover {
+        background-color: #bcbcbc;
+    }
+
+    td {
+        border: none;
+        padding: 12px;
+    }
+
+    .sensor {
+        color: white;
+        font-weight: bold;
+        background-color: #bcbcbc;
+        padding: 1px;
+    </style>
+</head>
+<body><h1>ESP with BME280</h1>
+
+</body>
+</html>
