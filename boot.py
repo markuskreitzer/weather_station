@@ -27,6 +27,7 @@ if len(addresses) > 0:
 else:
     print(addresses)
 
+# Add your SSID and password for wifi network here.
 ssid = 'xxxxx'
 password = 'xxxxxx'
 
