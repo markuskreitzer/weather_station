@@ -1,4 +1,4 @@
-import re 
+import re
 
 def web_page():
   bme = BME280.BME280(i2c=i2c, address=i2c_address)
